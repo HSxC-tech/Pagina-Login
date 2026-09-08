@@ -1,0 +1,74 @@
+@import "./variables.css";
+
+/* Fundo da tela inteira */
+body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+/* Cartão do Login */
+.login-box {
+    background-color: var(--color-surface);   
+    border: 1px solid var(--color-border);     
+    max-width: 400px;
+    min-width: 250px;
+    padding: 24px;
+    border-radius: 8px;
+}
+
+/* Título */
+.login-box h3 {
+    color: var(--color-ink);
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Rótulos dos campos */
+.login-box form h5 {
+    margin: 12px 0 4px 0;
+    color: var(--color-text-secondary);
+}
+
+/* Campos de digitação */
+.login-box form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    outline: none;
+}
+
+/* Quando o usuário clica no input */
+.login-box form input:focus {
+    border-color: var(--color-primary);
+}
+
+/* Botão de ação principal */
+.login-box button {
+    margin-top: 16px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover do botão */
+.login-box button:hover {
+    background-color: var(--color-primary-hover);
+}

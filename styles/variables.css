@@ -1,0 +1,18 @@
+﻿:root {
+  /* Cores Principais / Brand */
+  --color-ink: #0F172A;              /* Midnight - Brand escuro / texto principal */
+  --color-primary: #2563EB;          /* Azul ShoeStep - Primária */
+  --color-primary-hover: #1D4ED8;    /* Azul profundo - Primária hover */
+
+  /* Estrutura / Superfícies */
+  --color-bg: #F8FAFC;               /* Off-white frio - Background */
+  --color-surface: #FFFFFF;          /* Branco - Surface / cards */
+  --color-text-secondary: #64748B;   /* Slate - Texto secundário */
+  --color-border: #E2E8F0;           /* Cinza frio - Bordas */
+
+  /* Feedback / Status */
+  --color-success: #16A34A;          /* Verde - Positivo / vencedor */
+  --color-highlight: #F97316;        /* Laranja - Destaque comercial */
+  --color-warning: #F59E0B;          /* Âmbar - Alerta */
+  --color-error: #DC2626;            /* Vermelho - Erro */
+}
