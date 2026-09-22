@@ -1,18 +1,20 @@
-﻿:root {
+:root {
   /* Cores Principais / Brand */
-  --color-ink: #0F172A;              /* Midnight - Brand escuro / texto principal */
-  --color-primary: #2563EB;          /* Azul ShoeStep - Primária */
-  --color-primary-hover: #1D4ED8;    /* Azul profundo - Primária hover */
+  --color-ink: #F8FAFC;              /* Slate 50 - Texto principal no modo escuro */
+  --color-primary: #3B82F6;          /* Azul vibrante - Primária para modo escuro */
+  --color-primary-hover: #2563EB;    /* Azul profundo - Primária hover */
 
-  /* Estrutura / Superfícies */
-  --color-bg: #F8FAFC;               /* Off-white frio - Background */
-  --color-surface: #FFFFFF;          /* Branco - Surface / cards */
-  --color-text-secondary: #64748B;   /* Slate - Texto secundário */
-  --color-border: #E2E8F0;           /* Cinza frio - Bordas */
+  /* Estrutura / Superfícies (Modo Escuro) */
+  --color-bg: #0F172A;               /* Slate 900 - Background escuro */
+  --color-surface: #1E293B;          /* Slate 800 - Surface / cards / inputs */
+  --color-text-secondary: #94A3B8;   /* Slate 400 - Texto secundário / rótulos */
+  --color-border: #334155;           /* Slate 700 - Bordas sutis */
+  --color-text-on-primary: #FFFFFF;  /* Branco puro - Texto sobre botões primários */
 
   /* Feedback / Status */
-  --color-success: #16A34A;          /* Verde - Positivo / vencedor */
-  --color-highlight: #F97316;        /* Laranja - Destaque comercial */
-  --color-warning: #F59E0B;          /* Âmbar - Alerta */
-  --color-error: #DC2626;            /* Vermelho - Erro */
+  --color-success: #22C55E;          /* Verde claro - Positivo / vencedor */
+  --color-highlight: #FB923C;        /* Laranja vibrante - Destaque comercial */
+  --color-warning: #FBBF24;          /* Âmbar claro - Alerta */
+  --color-error: #EF4444;            /* Vermelho claro - Erro */
 }
+

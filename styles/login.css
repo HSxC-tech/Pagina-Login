@@ -12,6 +12,14 @@ body {
     font-family: sans-serif;
 }
 
+.IDs {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center; 
+}
+
 /* Cartão do Login */
 .login-box {
     background-color: var(--color-surface);   
@@ -22,53 +30,125 @@ body {
     border-radius: 8px;
 }
 
-/* Título */
-.login-box h3 {
-    color: var(--color-ink);
-    margin-top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ /* Título */
+    .login-box h3 {
+        color: var(--color-ink);
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+ /* Rótulos dos campos */
+        .login-box form h5 {
+            margin: 12px 0 4px 0;
+            color: var(--color-text-secondary);
+        }
+
+        /* Campos de digitação */
+        .login-box form input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            background-color: var(--color-surface);
+            color: var(--color-ink);
+            outline: none;
+        }
+
+        .login-box form input::placeholder {
+            color: var(--color-text-secondary);
+            opacity: 0.7;
+        }
+
+        /* Quando o usuário clica no input */
+        .login-box form input:focus {
+            border-color: var(--color-primary);
+        }
+
+ /* Botão de ação principal */
+    .login-box button {
+        margin-top: 16px;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        background-color: var(--color-primary);
+        color: var(--color-text-on-primary, #FFFFFF);
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+        /* Hover do botão */
+        .login-box button:hover {
+            background-color: var(--color-primary-hover);
+        }
+/* Cartão do Sign up */
+.signup-box {
+    background-color: var(--color-surface);   
+    border: 1px solid var(--color-border);     
+    max-width: 400px;
+    min-width: 250px;
+    padding: 24px;
+    border-radius: 8px;
 }
 
-/* Rótulos dos campos */
-.login-box form h5 {
-    margin: 12px 0 4px 0;
-    color: var(--color-text-secondary);
-}
+ /* Título */
+    .signup-box h3 {
+        color: var(--color-ink);
+        margin-top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-/* Campos de digitação */
-.login-box form input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 8px 12px;
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    background-color: var(--color-surface);
-    color: var(--color-ink);
-    outline: none;
-}
+ /* Rótulos dos campos */
+        .signup-box form h5 {
+            margin: 12px 0 4px 0;
+            color: var(--color-text-secondary);
+        }
 
-/* Quando o usuário clica no input */
-.login-box form input:focus {
-    border-color: var(--color-primary);
-}
+        /* Campos de digitação */
+        .signup-box form input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            background-color: var(--color-surface);
+            color: var(--color-ink);
+            outline: none;
+        }
 
-/* Botão de ação principal */
-.login-box button {
-    margin-top: 16px;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: var(--color-primary);
-    color: var(--color-surface);
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
+        .signup-box form input::placeholder {
+            color: var(--color-text-secondary);
+            opacity: 0.7;
+        }
 
-/* Hover do botão */
-.login-box button:hover {
-    background-color: var(--color-primary-hover);
-}
+        /* Quando o usuário clica no input */
+        .signup-box form input:focus {
+            border-color: var(--color-primary);
+        }
+
+ /* Botão de ação principal */
+    .signup-box button {
+        margin-top: 16px;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        background-color: var(--color-primary);
+        color: var(--color-text-on-primary, #FFFFFF);
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+ /* Hover do botão */
+        .signup-box button:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+

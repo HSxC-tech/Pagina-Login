@@ -7,24 +7,58 @@
     <link rel="stylesheet" href="../styles/login.css">
 </head>
 <body>
+    <div class="IDs">
+        <p>Higor</p>
+        <p>teste@gmail.com</p>
+        <p>teste@123</p>
+    </div>
     <div class="login-box">
         <h3>Fazer login</h3>
         
-        <form action="">
+        <form id="login">
             <h5>Digite o seu nome</h5>
-            <input type="text" placeholder="Digite o seu nome">
+            <input id="nome" type="text" placeholder="Digite o seu nome">
             
             <h5>Digite o seu email</h5>
-            <input type="email" placeholder="Digite o seu email">
+            <input id="email" type="email" placeholder="Digite o seu email">
 
             <h5>Digite a sua senha</h5>
-            <input type="password" placeholder="Digite a sua senha">
+            <input id="senha" type="password" é placeholder="Digite a sua senha">
 
-
+            <p id="msgLogin" class="mensagem"></p>
             <button type="submit">Logar</button>
         </form>
 
-        </label>
     </div>
+
+    <div class="signup-box">
+        <h3>Cadastrar conta</h3>
+        
+        <form id="signup">
+            <h5>Digite o seu nome</h5>
+            <input id="nomeSignup" type="text" placeholder="Digite o seu nome">
+            
+            <h5>Digite o seu email</h5>
+            <input id="emailSignup" type="email" placeholder="Digite o seu email">
+
+            <h5>Digite a sua senha</h5>
+            <input id="senhaSignup" type="password" é placeholder="Digite a sua senha">
+
+            <h5>Repita a sua senha</h5>
+            <input id="senhaRepeatSignup" type="password" é placeholder="Repita a sua senha">
+
+
+            <p id="msgSignup" class="mensagem"></p>
+            <button type="submit">Logar</button>
+        </form>
+
+        
+    </div>
+
+
+
+
+
+    <script src="forms-actions.js"></script>
 </body>
 </html>
