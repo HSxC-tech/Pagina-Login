@@ -1,35 +1,49 @@
-const usuarios = [
+const dadosNoDisco = localStorage.getItem("usuarios");
+let usuarios = dadosNoDisco ? JSON.parse(dadosNoDisco) : [
     {
-        nome: "Higor",
+        nome: "Teste",
         email: "teste@gmail.com",
         senha: "teste@123"
     }
-]
+];
+
+//Função para conferir dados do login
+
 
 const formLogin = document.querySelector("#login");
 
-//Função para conferir dados do login
+//Fomulário de Login
 formLogin.addEventListener("submit", (event) => {
-    console.log("Formulário submetido!");
+    const  msgLogin = document.querySelector('#msgLogin')
     event.preventDefault();
-    const nome = document.querySelector("#nome").value;
+    
     const email = document.querySelector("#email").value;
     const senha = document.querySelector("#senha").value;
 
-    for (let i=0; i <usuarios.length; i++) { 
-        const usuarioID = usuarios[i];
+    // Procura se existe alguém com esse email:
+    const usuarioEncontrado = usuarios.find(u => u.email === email);
 
-        if (usuarioID.email === email && usuarioID.senha === senha)
-            console.log("Login bem-sucedido!");
-            break;
+    if (!usuarioEncontrado) {
+        msgLogin.textContent = "Email não cadastrado!";
+        msgLogin.className = "mensagem erro";
+    } else if (usuarioEncontrado.senha !== senha) {
+        msgLogin.textContent = "Senha incorreta!";
+        msgLogin.className = "mensagem erro";
+    } else {
+        msgLogin.textContent = "Login realizado com sucesso!";
+        msgLogin.className = "mensagem sucesso";
     }
 });
 
+//Fomulário de Cadastro 
 const formSignup = document.querySelector("#signup");
 
 formSignup.addEventListener("submit", (event) => {
+    const msgSignup = document.querySelector("#msgSignup");
     event.preventDefault();
 
+    msgSignup.textContent = "Signup ativado";
+    msgSignup.className = "mensagem sucess";
     const nome = document.querySelector("#nomeSignup").value;
     const email = document.querySelector("#emailSignup").value;
     const senha = document.querySelector("#senhaSignup").value;
@@ -40,36 +54,25 @@ formSignup.addEventListener("submit", (event) => {
             email: email,
             senha: senha
         }
-    
-    if ( senha === senhaRepeat) {
-        usuarioCadastro();
+
+    const usuarioEncontrado = usuarios.find((usuario) => {
+        return usuario.email === email;
+    });    
+    if (usuarioEncontrado != null) {
+        msgSignup.textContent = "Email já cadastrado";
+        msgSignup.className = "mensagem erro";
+    }
+    else if ( senha === senhaRepeat) {
         usuarios.push(usuarioID_new)
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        console.log("Cadastro bem-sucedido!");
+        msgSignup.textContent = "Cadastro realizado com sucesso!";
+        msgSignup.className = "mensagem sucesso";
     }
     else {
-        console.log("As senhas devem ser iguais!");
+        msgSignup.textContent = "As senhas não conferem!";
+        msgSignup.className = "mensagem erro";
     } 
-
+    
 
 
 });
-/*Função para os cadastros dos usuários*/
-function usuarioCadastro(nome, email, senha) {
-    const usuariosSalvos = localStorage.getItem("usuarios");
-
-    if (usuarios === usuariosSalvos) {
-        let usuarios = usuariosSalvos;
-    }
-    else 
-        (JSON.parse(usuariosSalvos))
-        [
-            {
-                nome: "Higor",
-                email: "teste@gmail.com",
-                senha: "teste@123"
-            }
-        ];  
-
-    
-}

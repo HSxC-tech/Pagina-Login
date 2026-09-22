@@ -1,6 +1,10 @@
-﻿# Roadmap do Projeto: Pagina-Login
+# Roadmap do Projeto: Pagina-Login
 
 Este documento serve como mapa visual e guia de evolução técnica para o desenvolvimento da aplicação.
+
+> [!WARNING]
+> **Aviso de Estado Atual:** O formulário de **Signup (Cadastro) ainda NÃO está funcional**. A persistência com `localStorage` e a validação do cadastro precisam ser ajustadas antes de serem consideradas ativas.
+
 
 ```mermaid
 flowchart TD
