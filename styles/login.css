@@ -198,3 +198,19 @@ body {
         border-color: var(--color-success);
         visibility: visible;
     }
+
+/* Menu botões pré-definidos de testes */
+.menuside {
+    
+}
+    #msgMenuside {
+        position: static;
+        visibility: visible;
+        margin-top: 15px;
+        box-shadow: none;
+        text-align: center;
+    }
+    .menuside button {
+        margin: 10px;
+
+    }

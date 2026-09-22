@@ -72,7 +72,11 @@ formSignup.addEventListener("submit", (event) => {
         msgSignup.textContent = "As senhas não conferem!";
         msgSignup.className = "mensagem erro";
     } 
-    
+});
 
+const menuside = document.querySelector("#menuside");
+
+menuside,addEventListener("reset", (event) =>{
+    const msgMenuside = document.querySelector("#msgMenuside");
 
 });
