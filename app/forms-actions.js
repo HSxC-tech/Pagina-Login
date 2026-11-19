@@ -77,26 +77,31 @@ formSignup.addEventListener("submit", (event) => {
 const menuside = document.querySelector("#menuside");
 
 menuside.addEventListener("click", (event) =>{
-    const ResetDB = document.querySelector("#ResetDV");
-
-    msgMenuside.textContent = "Botão de reset ativado";
-    msgMenuside.className = "mensagem sucesso";
-
-    
-    let usuarios = [ 
-        {
-            nome: "Teste",
-            email: "teste@gmail.com",
-            senha: "Teste@123456"
-        }
-    ]
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    if (usuarios === localStorage){
-        msgMenuside.textContext = "Banco resetado";
+    if (event.target.id === "ResetDB") {
+        msgMenuside.textContent = "Botão de reset ativado";
         msgMenuside.className = "mensagem sucesso";
-    }else {
-        msgMenuside.textContent = "Bando não resetado";
-        msgMenuside.className = "mensagem erro";
+
+        usuarios = [ 
+            {
+                nome: "Teste",
+                email: "teste@gmail.com",
+                senha: "Teste@123456"
+            }
+        ];
+        localStorage.setItem("usuarios", JSON.stringify(usuarios));
+        msgMenuside.textContent = "Banco resetado";
+        msgMenuside.className = "mensagem sucesso";
     }
- 
+
+    if (event.target.id === "LoginEmailExistente") {
+        const emailAleatorio = usuarios[Math.floor(Math.random() * usuarios.length)].email;
+        const senhaAleatoria = Math.random().toString(36).slice(2, 10);
+
+        document.querySelector("#nomeSignup").value = "Teste" + Math.floor(Math.random() * 10000);
+        document.querySelector("#emailSignup").value = emailAleatorio;
+        document.querySelector("#senhaSignup").value = senhaAleatoria;
+        document.querySelector("#senhaRepeatSignup").value = senhaAleatoria;
+
+        formSignup.querySelector('button[type="submit"]').click();
+    }
 });
