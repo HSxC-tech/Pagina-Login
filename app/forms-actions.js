@@ -14,7 +14,7 @@ const formLogin = document.querySelector("#login");
 
 //Fomulário de Login
 formLogin.addEventListener("submit", (event) => {
-    const  msgLogin = document.querySelector('#msgLogin')
+    const msgLogin = document.querySelector('#msgLogin')
     event.preventDefault();
     
     const email = document.querySelector("#email").value;
@@ -43,7 +43,7 @@ formSignup.addEventListener("submit", (event) => {
     event.preventDefault();
 
     msgSignup.textContent = "Signup ativado";
-    msgSignup.className = "mensagem sucess";
+    msgSignup.className = "mensagem sucesso";
     const nome = document.querySelector("#nomeSignup").value;
     const email = document.querySelector("#emailSignup").value;
     const senha = document.querySelector("#senhaSignup").value;
@@ -73,10 +73,30 @@ formSignup.addEventListener("submit", (event) => {
         msgSignup.className = "mensagem erro";
     } 
 });
-
+//Funções do Menuside
 const menuside = document.querySelector("#menuside");
 
-menuside,addEventListener("reset", (event) =>{
-    const msgMenuside = document.querySelector("#msgMenuside");
+menuside.addEventListener("click", (event) =>{
+    const ResetDB = document.querySelector("#ResetDV");
 
+    msgMenuside.textContent = "Botão de reset ativado";
+    msgMenuside.className = "mensagem sucesso";
+
+    
+    let usuarios = [ 
+        {
+            nome: "Teste",
+            email: "teste@gmail.com",
+            senha: "Teste@123456"
+        }
+    ]
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    if (usuarios === localStorage){
+        msgMenuside.textContext = "Banco resetado";
+        msgMenuside.className = "mensagem sucesso";
+    }else {
+        msgMenuside.textContent = "Bando não resetado";
+        msgMenuside.className = "mensagem erro";
+    }
+ 
 });

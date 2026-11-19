@@ -191,12 +191,14 @@ body {
         color: var(--color-error);
         border-color: var(--color-error);
         visibility: visible;
+        
     }
 
     .mensagem.sucesso {
         color: var(--color-success);
         border-color: var(--color-success);
         visibility: visible;
+
     }
 
 /* Menu botões pré-definidos de testes */
