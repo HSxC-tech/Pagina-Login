@@ -8,3 +8,6 @@
    - Dizer o que vai fazer;
    - Só depois executar.
 3. **Respostas curtas para perguntas fechadas:** Se o usuário fizer uma pergunta que pode ser respondida com "Sim" ou "Não", responder **somente** "Sim" ou "Não", sem explicar antes que ele peça.
+4. **Nível de detalhe ao criar funções:**
+   - **"Criar somente a função"**: declarar apenas a função vazia (`function nome() {}`), sem parâmetros e sem condições/lógica.
+   - **"Criar a função completa / com parâmetros e condições"**: implementar os parâmetros e a lógica solicitada.

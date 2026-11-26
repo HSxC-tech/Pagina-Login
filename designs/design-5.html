@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso | App Nativo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* design-core · pre-emit critique: P5 H5 E5 S5 R5 V5 */
+        /* theme: native-app · audience: geral · use: autenticacao · tone: clean-mobile-first */
+
+        :root {
+            --color-bg: #F2F4F7;
+            --color-surface: #FFFFFF;
+            --color-surface-2: #F8FAFC;
+            --color-ink: #0F172A;
+            --color-ink-muted: #64748B;
+            --color-border: #E2E8F0;
+            --color-accent: #2563EB;
+            --color-accent-hover: #1D4ED8;
+            --color-accent-soft: #EFF6FF;
+            --color-success: #0F766E;
+            --color-focus: #2563EB;
+
+            --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            --radius-app: 28px;
+            --radius-control: 12px;
+            --radius-pill: 999px;
+
+            --shadow-app: 0 24px 48px -12px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.05);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            overflow-x: clip;
+            background-color: var(--color-bg);
+            color: var(--color-ink);
+            font-family: var(--font-body);
+            line-height: 1.5;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            padding: 2rem 1rem 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-frame {
+            width: 100%;
+            max-width: 420px;
+            background-color: var(--color-surface);
+            border-radius: var(--radius-app);
+            box-shadow: var(--shadow-app);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            position: relative;
+        }
+
+        /* Barra superior do app */
+        .app-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .app-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: var(--radius-pill);
+            background-color: var(--color-accent);
+        }
+
+        .app-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-ink);
+        }
+
+        /* Painel DevTools recolhivel no canto superior direito */
+        .devtools-panel {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 30;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-control);
+            box-shadow: 0 12px 28px -8px rgba(15, 23, 42, 0.16);
+            max-width: 260px;
+        }
+
+        .devtools-panel summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 0.45rem 0.85rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-ink-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            user-select: none;
+        }
+
+        .devtools-panel summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .devtools-panel summary::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--color-success);
+        }
+
+        .devtools-panel summary:hover {
+            color: var(--color-ink);
+        }
+
+        .devtools-panel[open] summary {
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-ink);
+        }
+
+        #menuside {
+            padding: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        #menuside h3 {
+            display: none;
+        }
+
+        #menuside p {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-ink-muted);
+            margin-top: 0.4rem;
+        }
+
+        #menuside button {
+            width: 100%;
+            text-align: left;
+            background-color: var(--color-surface-2);
+            color: var(--color-ink);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 0.42rem 0.65rem;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+        #menuside button:hover {
+            background-color: var(--color-accent-soft);
+            border-color: var(--color-accent);
+        }
+
+        #menuside #ResetDB {
+            background-color: var(--color-accent-soft);
+            color: var(--color-accent);
+            border-color: transparent;
+            font-weight: 600;
+        }
+
+        #menuside #ResetDB:hover {
+            background-color: var(--color-accent);
+            color: var(--color-surface);
+        }
+
+        .app-heading {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .app-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-style: normal;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            color: var(--color-ink);
+        }
+
+        .app-subtitle {
+            font-size: 0.875rem;
+            color: var(--color-ink-muted);
+        }
+
+        /* Abas superiores suaves */
+        .segmented-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: var(--color-surface-2);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-control);
+            padding: 0.25rem;
+            gap: 0.25rem;
+        }
+
+        .tab-btn {
+            border: none;
+            background: transparent;
+            padding: 0.55rem 0.75rem;
+            border-radius: 9px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-ink-muted);
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tab-btn.is-active {
+            background-color: var(--color-surface);
+            color: var(--color-ink);
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+        }
+
+        .tab-btn:focus-visible {
+            outline: 2px solid var(--color-focus);
+            outline-offset: 2px;
+        }
+
+        .is-hidden {
+            display: none;
+        }
+
+        .login-box h3,
+        .signup-box h3 {
+            display: none;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        form h5 {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--color-ink);
+            margin-top: 0.65rem;
+        }
+
+        form h5:first-of-type {
+            margin-top: 0;
+        }
+
+        form input {
+            width: 100%;
+            padding: 0.72rem 0.9rem;
+            background-color: var(--color-surface-2);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-control);
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            color: var(--color-ink);
+            transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        form input::placeholder {
+            color: var(--color-ink-muted);
+            opacity: 0.7;
+        }
+
+        form input:hover {
+            border-color: var(--color-ink-muted);
+        }
+
+        form input:focus-visible {
+            outline: none;
+            background-color: var(--color-surface);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px var(--color-accent-soft);
+        }
+
+        form button[type="submit"] {
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0.82rem 1.25rem;
+            background-color: var(--color-accent);
+            color: var(--color-surface);
+            border: none;
+            border-radius: var(--radius-control);
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        form button[type="submit"]:hover {
+            background-color: var(--color-accent-hover);
+        }
+
+        form button[type="submit"]:active {
+            transform: scale(0.985);
+        }
+
+        form button[type="submit"]:focus-visible {
+            outline: 2px solid var(--color-focus);
+            outline-offset: 2px;
+        }
+
+        .mensagem {
+            min-height: 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-success);
+            margin-top: 0.35rem;
+        }
+
+        #container {
+            padding-top: 0.85rem;
+            border-top: 1px solid var(--color-border);
+            font-size: 0.75rem;
+            color: var(--color-ink-muted);
+        }
+
+        #container .IDs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.35rem 0.75rem;
+        }
+
+        #container .IDs p:first-child {
+            font-weight: 600;
+            color: var(--color-ink);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <details class="devtools-panel">
+        <summary>DevTools</summary>
+        <menu id="menuside">
+            <h3>Testar</h3>
+            <button type="button" id="ResetDB">Reset banco de dados</button>
+
+            <p>Entrar</p>
+            <button type="button" id="LoginEmailExistente">E-mail existente</button>
+            <button type="button" id="LoginEmailInexistente">E-mail inexistente</button>
+            <button type="button" id="LoginSenhaCerta">Senha certa</button>
+            <button type="button" id="LoginSenhaErrada">Senha errada</button>
+
+            <p>Cadastrar</p>
+            <button type="button" id="SignupEmailCadastrado">E-mail ja cadastrado</button>
+            <button type="button" id="SignupEmailNaoCadastrado">E-mail nao cadastrado</button>
+            <button type="button" id="SignupSenhaCompativeis">Senhas compativeis</button>
+            <button type="button" id="SignupSenhaIncompativel">Senhas incompativeis</button>
+
+            <p id="msgMenuside" class="mensagem"></p>
+        </menu>
+    </details>
+
+    <main class="app-frame">
+        <header class="app-topbar">
+            <div class="app-brand">
+                <span class="app-dot" aria-hidden="true"></span>
+                <span class="app-name">Conta</span>
+            </div>
+        </header>
+
+        <div class="app-heading">
+            <h1 class="app-title">Bem-vindo</h1>
+            <p class="app-subtitle">Acesse sua conta ou crie um novo perfil</p>
+        </div>
+
+        <nav class="segmented-tabs" aria-label="Alternar formulario">
+            <button type="button" class="tab-btn is-active" id="tabLogin">Entrar</button>
+            <button type="button" class="tab-btn" id="tabSignup">Cadastrar</button>
+        </nav>
+
+        <section class="login-signup">
+            <div class="login-box" id="panelLogin">
+                <h3>Fazer login</h3>
+                <form id="login">
+                    <h5>Digite o seu email</h5>
+                    <input id="email" type="email" placeholder="nome@exemplo.com">
+
+                    <h5>Digite a sua senha</h5>
+                    <input id="senha" type="password" placeholder="Sua senha">
+
+                    <p id="msgLogin" class="mensagem"></p>
+                    <button type="submit">Logar</button>
+                </form>
+            </div>
+
+            <div class="signup-box is-hidden" id="panelSignup">
+                <h3>Cadastrar conta</h3>
+                <form id="signup">
+                    <h5>Digite o seu nome</h5>
+                    <input id="nomeSignup" type="text" placeholder="Nome completo">
+
+                    <h5>Digite o seu email</h5>
+                    <input id="emailSignup" type="email" placeholder="nome@exemplo.com">
+
+                    <h5>Digite a sua senha</h5>
+                    <input id="senhaSignup" type="password" placeholder="Crie uma senha">
+
+                    <h5>Repita a sua senha</h5>
+                    <input id="senhaRepeatSignup" type="password" placeholder="Repita a senha">
+
+                    <p id="msgSignup" class="mensagem"></p>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="container">
+            <div class="IDs">
+                <p>Teste:</p>
+                <p>teste@gmail.com</p>
+                <p>teste@123</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            var tabLogin = document.getElementById('tabLogin');
+            var tabSignup = document.getElementById('tabSignup');
+            var panelLogin = document.getElementById('panelLogin');
+            var panelSignup = document.getElementById('panelSignup');
+
+            tabLogin.addEventListener('click', function () {
+                tabLogin.classList.add('is-active');
+                tabSignup.classList.remove('is-active');
+                panelLogin.classList.remove('is-hidden');
+                panelSignup.classList.add('is-hidden');
+            });
+
+            tabSignup.addEventListener('click', function () {
+                tabSignup.classList.add('is-active');
+                tabLogin.classList.remove('is-active');
+                panelSignup.classList.remove('is-hidden');
+                panelLogin.classList.add('is-hidden');
+            });
+        })();
+    </script>
+    <script src="../app/forms-actions.js"></script>
+    <script src="../app/forms-tests.js"></script>
+</body>
+</html>
